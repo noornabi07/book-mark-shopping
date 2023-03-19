@@ -47,8 +47,9 @@ const showData = datas =>{
           <img class="h-96 z-10 relative" src="${data.image}" alt="Shoes" />
 
           <div class="absolute top-px right-px p-3">
-          <i onclick="deleteProduct(${data.id})" class="fa-solid fa-bookmark text-5xl z-20 mr-3 text-purple-500"></i>
-          <i onclick ="setProduct('${data?.id}', '${data?.price}', '${data?.title}')" class="fa-regular fa-bookmark text-5xl z-20 text-lime-600"></i>
+          <i onclick="deleteProduct(${data.id})" class="fa-solid fa-bookmark text-2xl md:text-5xl z-20 md:mr-3 text-purple-500"></i>
+
+          <i onclick ="setProduct('${data?.id}', '${data?.price}', '${data?.title}')" class="fa-regular fa-bookmark text-2xl md:text-5xl z-20 text-lime-600"></i>
           </div>
         </figure>
 
