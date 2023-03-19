@@ -47,8 +47,8 @@ const showData = datas =>{
           <img class="h-96 z-10 relative" src="${data.image}" alt="Shoes" />
 
           <div class="absolute top-px right-px p-3">
-          <i class="fa-solid fa-bookmark text-5xl z-20 mr-3 text-purple-500"></i>
-          <i class="fa-regular fa-bookmark text-5xl z-20 text-lime-600"></i>
+          <i onclick="deleteProduct(${data.id})" class="fa-solid fa-bookmark text-5xl z-20 mr-3 text-purple-500"></i>
+          <i onclick ="setProduct('${data?.id}', '${data?.price}', '${data?.title}')" class="fa-regular fa-bookmark text-5xl z-20 text-lime-600"></i>
           </div>
         </figure>
 
@@ -65,13 +65,52 @@ const showData = datas =>{
         `;
         productContainer.appendChild(myDiv);
         // console.log(data);
-    })
+    });
     const progress = document.getElementById('progress')
     progress.classList.add('hidden');
 
     const showbtn = document.getElementById('showAllBtn');
     showbtn.classList.add('hidden');
+};
+
+// setProduct in localStorage
+const setProduct = (id, price, title) =>{
+    // console.log(id, price,  title); 
+    const previousProduct = JSON.parse(localStorage.getItem('product'));
+    const currentProduct = {id, price, title, product: true}
+    let product = [];
+    if(previousProduct){
+        const isThisProduct = previousProduct.find((pd) => pd.id == id);
+        // console.log(isThisProduct);
+        if(isThisProduct){
+            Swal.fire({
+                icon: 'error',
+                title: 'Already this bookmarked!',
+                text: 'Already this bookmarked!',
+                footer: '<a href="">Why do I have this issue?</a>'
+              });
+              return 0;
+        }else{
+            product.push(...previousProduct, currentProduct);
+            localStorage.setItem('product', JSON.stringify(product));
+        }
+    }else{
+        product.push(currentProduct);
+        localStorage.setItem('product', JSON.stringify(product));
+    }
 }
+
+// Delete product item from localStorage
+const deleteProduct = (id) =>{
+    const previousBookmark = JSON.parse(localStorage.getItem('product'));
+    if(previousBookmark){
+        const removeItem = previousBookmark?.filter((product) => product.id != id);
+        localStorage.setItem('product', JSON.stringify(removeItem));
+
+    }
+    // console.log(id);
+}
+
 
 // all button show
 const allBtn = async() =>{
@@ -89,6 +128,7 @@ const showAlert = () =>{
       )
     // console.log('hello')
 }
+
 
 
 getData();
