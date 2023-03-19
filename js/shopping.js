@@ -1,4 +1,6 @@
 const getData = async() =>{
+   const progress = document.getElementById('progress')
+    progress.classList.remove('hidden');
     const url = `https://fakestoreapi.com/products`;
     const res = await fetch(url);
     const data = await res.json();
@@ -22,7 +24,7 @@ const showData = datas =>{
           <h4 class="card-title font-bold text-green-600"><span class="text-yellow-500">Catagories:</span> ${data.category}</h4>
           <p class="text-3xl font-semibold">${data.title}</p>
           <div class="card-actions justify-center">
-            <button class="btn btn-primary">Buy Now</button>
+            <button class="btn btn-outline btn-primary">Buy Now</button>
           </div>
         </div>
       </div>
@@ -30,6 +32,9 @@ const showData = datas =>{
         productContainer.appendChild(myDiv);
         // console.log(data);
     })
+    const progress = document.getElementById('progress')
+    progress.classList.add('hidden');
+
     const showbtn = document.getElementById('showAllBtn');
     showbtn.classList.add('hidden');
 }

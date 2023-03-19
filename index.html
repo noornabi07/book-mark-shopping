@@ -22,15 +22,22 @@
             <input type="text" class="border-2 border-gray-500 py-2 px-4 rounded" placeholder="Search Product Here">
             <button class="bg-green-600 text-2xl py-2 px-4 rounded font-semibold text-white ml-3">Search</button>
         </section>
+
     </header>
 
     <!-- main section -->
+
+    <div id="progress" class="flex justify-center mt-7 hidden">
+        <progress class="progress w-32"></progress>
+    </div>   
+     <!--card section  -->
     <section id="product-container" class="grid grid-cols-3 gap-5 px-20 mt-20 pb-5">
        
     </section>
 
+    <!-- show all button section -->
     <section id="showAllBtn" class="flex justify-center pb-10 hidden">
-        <button onclick="allBtn()" class="text-2xl font-semibold text-white py-2 px-4 bg-red-600 rounded mt-7">Show All</button>
+        <button onclick="allBtn()" class="btn btn-outline btn-success">Show All</button>
     </section>
 
     <script src="js/shopping.js"></script>
