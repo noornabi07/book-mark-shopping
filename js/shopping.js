@@ -2,12 +2,15 @@ const getData = async() =>{
     const url = `https://fakestoreapi.com/products`;
     const res = await fetch(url);
     const data = await res.json();
-    showData(data);
+    showData(data.splice(0, 6));
+    const showbtn = document.getElementById('showAllBtn');
+    showbtn.classList.remove('hidden');
     // console.log(data)
 }
 
 const showData = datas =>{
     const productContainer = document.getElementById('product-container');
+    productContainer.innerHTML = '';
     datas.forEach(data =>{
         const myDiv = document.createElement('div');
         myDiv.innerHTML = `
@@ -25,8 +28,20 @@ const showData = datas =>{
       </div>
         `;
         productContainer.appendChild(myDiv);
-        console.log(data);
+        // console.log(data);
     })
+    const showbtn = document.getElementById('showAllBtn');
+    showbtn.classList.add('hidden');
 }
+
+// all button show
+const allBtn = async() =>{
+    const url = `https://fakestoreapi.com/products`;
+    const res = await fetch(url);
+    const data = await res.json();
+    showData(data);
+}
+
+
 
 getData();
