@@ -1,3 +1,27 @@
+// slider part
+const images = [
+    'images/pic-1.jpg',
+    'images/pic-2.jpg',
+    'images/pic-3.jpg',
+    'images/pic-4.jpg',
+    'images/pic-5.jpg'
+]
+const startSlider = () =>{
+    let imgCount = 0;
+setInterval(() =>{
+    const imgContainer = document.getElementById('slider-img');
+    if(imgCount === images.length){
+        imgCount = 0;
+    }
+    const imgUrl = images[imgCount];
+    imgContainer.setAttribute('src', imgUrl);
+    imgCount++;
+    // console.log(count)
+}, 1000);
+};
+
+
+// api get data part
 const getData = async() =>{
    const progress = document.getElementById('progress')
     progress.classList.remove('hidden');
@@ -24,7 +48,7 @@ const showData = datas =>{
           <h4 class="card-title font-bold text-green-600"><span class="text-yellow-500">Catagories:</span> ${data.category}</h4>
           <p class="text-3xl font-semibold">${data.title}</p>
           <div class="card-actions justify-center">
-            <button class="btn btn-outline btn-primary">Buy Now</button>
+            <button onclick="showAlert()" class="btn btn-outline btn-primary">Buy Now</button>
           </div>
         </div>
       </div>
@@ -47,6 +71,14 @@ const allBtn = async() =>{
     showData(data);
 }
 
+const showAlert = () =>{
+    Swal.fire(
+        'Good job!',
+        'Congratulation!! You Buy This Product!',
+        'success'
+      )
+    // console.log('hello')
+}
 
 
 getData();

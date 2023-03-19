@@ -18,20 +18,23 @@
     <header>
         <h2 class="text-5xl font-bold text-center mt-7 text-red-500">Welcome To My Shopping Mohol</h2>
 
+        <div class="w-96 h-auto mx-auto mt-5 border-4">
+            <img id="slider-img" class="rounded-lg" src="images/pic-1.jpg" alt="">
+        </div>
+
         <section class="flex justify-center mt-8">
-            <input type="text" class="border-2 border-gray-500 py-2 px-4 rounded" placeholder="Search Product Here">
-            <button class="bg-green-600 text-2xl py-2 px-4 rounded font-semibold text-white ml-3">Search</button>
+            <button onclick="startSlider()" class="bg-green-600 text-2xl py-2 px-4 rounded font-semibold text-white ml-3">Start slider</button>
         </section>
 
     </header>
 
     <!-- main section -->
 
-    <div id="progress" class="flex justify-center mt-7 hidden">
+    <div id="progress" class="flex justify-center mt-3 hidden">
         <progress class="progress w-32"></progress>
     </div>   
      <!--card section  -->
-    <section id="product-container" class="grid grid-cols-3 gap-5 px-20 mt-20 pb-5">
+    <section id="product-container" class="grid grid-cols-3 gap-5 px-20 mt-10 pb-5">
        
     </section>
 
@@ -39,6 +42,8 @@
     <section id="showAllBtn" class="flex justify-center pb-10 hidden">
         <button onclick="allBtn()" class="btn btn-outline btn-success">Show All</button>
     </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script src="js/shopping.js"></script>
 </body>
